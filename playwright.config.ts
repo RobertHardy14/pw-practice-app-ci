@@ -12,7 +12,7 @@ export default defineConfig({
   reporter: 'html',
   use: {
     baseURL: 'http://localhost:4200',
-    viewport: {height: 720, width: 1280},
+    viewport: { height: 720, width: 1280 },
     trace: 'on-first-retry',
   },
 
@@ -35,5 +35,10 @@ export default defineConfig({
     //   }
     // }
   ],
+
+  webServer: {
+    command: 'npm start',
+    url: 'localhost:4200'
+  }
 
 });
