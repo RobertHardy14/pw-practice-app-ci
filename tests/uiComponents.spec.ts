@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test'
+import { PageManager } from '../page-objects/pageManager'
 
 test.beforeEach(async ({ page }) => {
-    await page.goto('localhost:4200')
+    await page.goto('/')
 })
 
 test.describe('Form layouts page', () => {
@@ -27,12 +28,13 @@ test.describe('Form layouts page', () => {
         await expect(usingTheGridEmail).toHaveValue('test2@test.com')
     })
 
-    test('radio button', async ({ page }) => {
+    test.only('radio button', async ({ page }) => {
         const usingTheGridEmail = page.locator('nb-card', { hasText: "Using the Grid" })
         // await usingTheGridEmail.getByLabel('Option 1').check({ force: true })
-        await usingTheGridEmail.getByRole('radio', { name: "Option 1" }).check({ force: true })
+        await usingTheGridEmail.getByRole('radio', { name: "Option 2" }).check({ force: true })
         const radioStatus = await usingTheGridEmail.getByRole('radio', { name: "Option 1" })
             .isChecked()
+        // await expect(usingTheGridEmail).toHaveScreenshot()
         expect(radioStatus).toBeTruthy()
         await expect(usingTheGridEmail.getByRole('radio', { name: "Option 1" })).toBeChecked()
 
